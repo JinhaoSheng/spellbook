@@ -15,14 +15,14 @@ img#skull {
   right: 5vw;
   top: 5vw;
   transform: rotate(15deg);
-  width: 25vw;
+  width: 15vw;
 }
 
 img#quill {
   position: absolute;
-  top: calc(30vw + 40px);
+  top: calc(20vw + 20px);
   right: 3vw;
-  width: 20vw;
+  width: 10vw;
 }
 
 h1 {
