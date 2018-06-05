@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>spellBook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Spellbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1 id="heading">spellbook</h1>
-    <h1 id="heading2">spellbook</h1>
-    <h1 id="heading3">spellbook</h1>
+  <img src="skull.png" id="skull" alt="">
+  <img src="quill.png" id="quill" alt="">
 
-    <form onsubmit="myFunction();return false">
-        <input type="text" name="formtext" id="1" autofocus>
-        <input type="submit" value="submit">
-    </form>
 
-    <button id="button">change Text</button>
+  <h1>Spellbook</h1>
 
-    <div id="spells">
+  <form>
+    <div>
+      <input
+        type="text"
+        name="spellName"
+        placeholder="Enter a spell name"
+        autofocus
+      >
+      <button type="submit">Add</button>
+    </div>
+  </form>
 
-    </div>>
+  <main>
+    <ul id="spells"></ul>
+  </main>
 
-    <script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
