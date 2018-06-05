@@ -1,12 +1,13 @@
 const button = document.querySelector('#button')
 
 const sayHi = function(){
-    const heading = document.querySelector('#heading2')
-    heading.textContent = 'I changed it'
+    document
+        .querySelector("#heading2")
+        .textContent = 'I changed it!'
 }
+button.addEventListener('click', sayHi)
 
 const form = document.querySelector('form')
-button.addEventListener('click', sayHi)
 function myFunction(){
     const heading2 = document.querySelector("#heading3")
     heading2.textContent = form.elements["formtext"].value
