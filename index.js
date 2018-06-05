@@ -9,8 +9,8 @@ button.addEventListener('click', sayHi)
 
 const form = document.querySelector('form')
 function myFunction(){
-    const heading2 = document.querySelector("#heading3")
-    heading2.textContent = form.elements["formtext"].value
+    const heading2 = document.querySelector("div")
+    heading2.textContent += form.elements["formtext"].value + ' '
 }
 
 
