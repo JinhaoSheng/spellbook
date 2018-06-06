@@ -3,10 +3,16 @@ const app = {
     init: function() {
         var spellArray =[]
         const form = document.querySelector('form')
+        const Delete = document.querySelector('#delete')
         form.addEventListener('submit', ev => {
-        this.handleSubmit(ev, spellArray)
-        console.log(spellArray)
+            this.handleSubmit(ev, spellArray)
+            console.log(spellArray)
       })
+        Delete.addEventListener('click', Array => {
+            this.handleDelete(spellArray)
+            console.log(spellArray)
+        })
+        
     },
   
     renderProperty: function(name, value) {
@@ -15,7 +21,7 @@ const app = {
       el.classList.add(name)
       return el
     },
-    
+
 
   
     renderItem: function(spell) {
@@ -55,6 +61,12 @@ const app = {
       f.reset()
   
     },
+
+    handleDelete: function(array){
+        const list = document.querySelector('#spells')
+        list.removeChild(list.lastChild)
+        array.pop()
+    }
   
   }
   
