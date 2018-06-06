@@ -15,6 +15,7 @@ const app = {
       el.classList.add(name)
       return el
     },
+    
 
   
     renderItem: function(spell) {
