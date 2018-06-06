@@ -3,15 +3,23 @@ const app = {
     init: function() {
         var spellArray =[]
         const form = document.querySelector('form')
-        const Delete = document.querySelector('#delete')
+        const ul = document.querySelector('#spells')
         form.addEventListener('submit', ev => {
             this.handleSubmit(ev, spellArray)
             console.log(spellArray)
+            var deleteButton = document.createElement('button')
+            var text = document.createTextNode('Delete')
+            deleteButton.appendChild(text)
+            ul.appendChild(deleteButton)
+            deleteButton.addEventListener('click', Array => {
+                this.handleDelete(spellArray)
+                console.log(spellArray)
+            })
       })
-        Delete.addEventListener('click', Array => {
-            this.handleDelete(spellArray)
-            console.log(spellArray)
-        })
+        // Delete.addEventListener('click', Array => {
+        //     this.handleDelete(spellArray)
+        //     console.log(spellArray)
+        // })
         
     },
   
@@ -64,6 +72,7 @@ const app = {
 
     handleDelete: function(array){
         const list = document.querySelector('#spells')
+        list.removeChild(list.lastChild)
         list.removeChild(list.lastChild)
         array.pop()
     }
