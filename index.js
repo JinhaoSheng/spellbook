@@ -1,35 +1,62 @@
-const form = document.querySelector('form')
+const app = {
 
-
-
-const changeHeading = function(ev) {
-
-  ev.preventDefault()
-  const f = ev.target
+    init: function() {
+        var spellArray =[]
+        const form = document.querySelector('form')
+        form.addEventListener('submit', ev => {
+        this.handleSubmit(ev, spellArray)
+        console.log(spellArray)
+      })
+    },
   
-  const enteredSpell = document.createTextNode(f.spellName.value)
-  const enteredSpell2 = document.createTextNode(f.spellName2.value)
-  const spellUl = document.querySelector("#spells")
-  let a = createListUsingSpan(enteredSpell, enteredSpell2)
-  spellUl.appendChild(a)
-}
+    renderProperty: function(name, value) {
+      const el = document.createElement('span')
+      el.textContent = value
+      el.classList.add(name)
+      return el
+    },
 
-function createListUsingSpan(enteredSpell, enteredSpell2){
-    const span = document.createElement("span")
-    const span2 = document.createElement("span")
-    span.appendChild(enteredSpell)
-    span.appendChild(enteredSpell2)
-    return createList(span, span2)
-}
-
-function createList(span, span2){
-    const list = document.createElement("li")
-    list.appendChild(span)
-    list.appendChild(span2)
-    return list
-}
-
-
-
-
-form.addEventListener('submit', changeHeading)
+  
+    renderItem: function(spell) {
+      // ['name', 'level']
+      properties = Object.keys(spell)
+      // collect an array of renderProperty's return values
+      // (an array of <span> elements)
+      const childElements = properties.map(property => {
+         return this.renderProperty(property, spell[property])
+      })
+      const item = document.createElement('li')
+      item.classList.add('spell')
+      // append each <span> to the <li>
+      childElements.forEach(el => {
+        item.appendChild(el)
+      })
+      return item
+    },
+  
+  
+  
+    handleSubmit: function(ev, array) {
+      ev.preventDefault()
+      const f = ev.target
+      const spell = {
+        name: f.spellName.value,
+        level: f.level.value,
+      }
+      array.push(spell)
+      const item = this.renderItem(spell)
+      const list = document.querySelector('#spells')
+  
+      list.appendChild(item)
+  
+  
+  
+      f.reset()
+  
+    },
+  
+  }
+  
+  
+  
+  app.init()
