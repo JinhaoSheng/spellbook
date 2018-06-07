@@ -2,24 +2,25 @@ const app = {
 
     init: function() {
         var spellArray =[]
+        var spellMap = new Map()
+        var spellMap2 = new Map()
+        var n = 0
         const form = document.querySelector('form')
         const ul = document.querySelector('#spells')
         form.addEventListener('submit', ev => {
             this.handleSubmit(ev, spellArray)
-            console.log(spellArray)
             var deleteButton = document.createElement('button')
             var text = document.createTextNode('Delete')
             deleteButton.appendChild(text)
             ul.appendChild(deleteButton)
+            
+            spellMap.set(deleteButton, spellArray[spellArray.length - 1])
+
             deleteButton.addEventListener('click', Array => {
-                this.handleDelete(spellArray)
-                console.log(spellArray)
+                var a = spellMap.get(deleteButton)
+                this.handleDelete(spellArray, a)
             })
       })
-        // Delete.addEventListener('click', Array => {
-        //     this.handleDelete(spellArray)
-        //     console.log(spellArray)
-        // })
         
     },
   
@@ -63,6 +64,7 @@ const app = {
       const list = document.querySelector('#spells')
   
       list.appendChild(item)
+      console.log(list)
   
   
   
@@ -70,11 +72,27 @@ const app = {
   
     },
 
-    handleDelete: function(array){
+    handleDelete: function(array, thing){
         const list = document.querySelector('#spells')
-        list.removeChild(list.lastChild)
-        list.removeChild(list.lastChild)
-        array.pop()
+        // list.removeChild(spellMap.get(button))
+        let b = document.createElement('li')
+        b.classList.add("spell")
+        
+        const span1 = document.createElement('span')
+        span1.classList.add("name")
+
+        const span2 = document.createElement('span')
+        span2.classList.add("level")
+
+        span1.textContent = thing.name
+        span2.textContent = thing.level
+
+        b.appendChild(span1)
+        b.appendChild(span2)
+        
+        console.log(b)
+        console.log(list.firstChild)
+
     }
   
   }
